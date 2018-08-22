@@ -1,14 +1,16 @@
 # Generating Verification Code with Canvas API
 
-Here is how it looks like:
+<div align="center">
+  <img src='./samples.jpg' alt='sample image'>
+</div>
 
-![samples](./samples.jpg)
-
-A few things recommend to do before using the code:
+## Before you start
 
 1. READ and UNDERSTAND the code, detailed explainations are provided in comments. Also, check the reference links below
 2. TWEAK the settings (font style, color, translate pos, rotation, scale) to however you want them to be if needed
 3. HAVE FUN playing with the code, they are ALIVE!
+
+<br>
 
 使用代码前，推荐先做以下几件事：
 
@@ -18,34 +20,47 @@ A few things recommend to do before using the code:
 
 ## Usage
 
-Copy `canvas-verification-code.js` and `codeBg.png` to your repo.
+1. Copy `canvas-verification-code.js` and `codeBg.png` to your repo.
+2. Make sure your project has a es6 compiler (e.g.: Babel) to compile the code
+
+<br>
+
+使用方法：
+
+1. 把`canvas-verification-code.js` and `codeBg.png`复制到项目下
+2. 项目中需要有可以把 es6 编译为 es5 的工具，例如 Babel
 
 ### Plain Html and Javascript
+
+See it live on [CODEPEN](https://codepen.io/levblanc/pen/bxNPNB/)
 
 ```html
 <div class='verificationCode'>
   <!-- use css absolute positioning to put codeBg.png   
     underneath your verification code -->
   <div class='codeBackground'></div>
-  <img class='codeImage' src='imageData' alt='verificationCode' />
+  <img class='codeImage' src='' alt='verificationCode' />
 </div>
-```
 
-```javascript
-import generateCode from '/path/to/canvas-verification-code.js'
+<!-- ... ... -->
 
-const { code, data } = generateCode(120, 40)
+<script src='/path/to/canvas-verification-code.js'>
+<script>
+var verificationCode = generateCode(120, 40)
 
-window.imageData = data
+var codeImage = document.getElementsByClassName('codeImage')[0]
 
-// compare user input and the value of `code` for verification
+codeImage.src = verificationCode.data
+</script>
 ```
 
 ### Using Vue.js 2.0
 
+See it live on [CODEPEN](https://codepen.io/levblanc/pen/yxywEx/)
+
 ```pug
 <template lang='pug'>
-  div(class='verificationCode')
+  div(id='app' class='verificationCode')
     //- use css absolute positioning to put codeBg.png   
     //- underneath your verification code
     div(class='codeBackground')
@@ -54,8 +69,9 @@ window.imageData = data
       :src='imageData'
       alt='verificationCode'
     )
-  input(v-model.trim='codeInput')
-  div code input is {{ checkResult }}
+    br
+    input(v-model='codeInput' placeholder="enter code")
+    p code input is: {{ validInput }}
 </template>
 ```
 
@@ -66,12 +82,12 @@ export default {
   data() {
     return {
       codeInput: '',
-      codeImage: ''
+      imageData: '',
       codeText : '',
     }
   },
   computed: {
-    checkResult() {
+    validInput() {
       return this.codeText === this.codeInput
         ? 'correct'
         : 'not correct'
@@ -80,7 +96,7 @@ export default {
   mounted() {
     const { code, data } = generateCode(120, 40)
 
-    this.codeImage = data
+    this.imageData = data
     this.codeText  = code
   }
 }
