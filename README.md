@@ -14,7 +14,7 @@
 
 使用代码前，推荐先做以下几件事：
 
-1. **读懂**代码。源码中有详细的注释说明（英文），或者阅读 [我的解读文章（中文）](https://levblanc.com/js/canvas-verification-code.html) 及参考最下方的参考文章
+1. **读懂**代码。源码中有详细的注释说明（英文），或者阅读 [我的解读文章（中文）](https://levblanc.com/js/canvas-verification-code.html) 及参考最下方的 [References](#References)
 2. 调整源码中对字体、颜色、位移、旋转、缩放的设置，以切合自己的需求
 3. 代码是活的，享受每一次尝试的过程
 
@@ -121,10 +121,12 @@ export default {
 
 [3] [Canvas tutorial @ MDN](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)
 
-[4] [shoestrong/validate-code-canvas](https://github.com/shoestrong/validate-code-canvas)
+[4] [html5 Canvas画图教程26:用transform来实现位移,缩放,旋转等](http://jo2.org/html5-canvas-transform/)
 
-[5] [KIDx/verify-code](https://github.com/KIDx/verify-code)
+[5] [shoestrong/validate-code-canvas](https://github.com/shoestrong/validate-code-canvas)
 
-[6] [jovey-zheng/verify-code](https://github.com/jovey-zheng/verify-code)
+[6] [KIDx/verify-code](https://github.com/KIDx/verify-code)
 
-[7] [F-happy/verification-code](https://github.com/F-happy/verification-code)
+[7] [jovey-zheng/verify-code](https://github.com/jovey-zheng/verify-code)
+
+[8] [F-happy/verification-code](https://github.com/F-happy/verification-code)
